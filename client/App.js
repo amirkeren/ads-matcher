@@ -20,7 +20,9 @@
                 console.log("received from server - " + data);
                 if (data == undefined) {
                     //don't display ad
+                    console.log("shouldn't display ad");
                 } else {
+                    console.log("should display ad");
                     $("#ad-container").html(data.ad);
                     $("#explanation-container").html(data.explanation);
                     $("#bottom-container").show();

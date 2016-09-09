@@ -117,6 +117,7 @@ function shouldDisplayAd(emotion_response) {
     if (level > threshold) {
         return true;
     }
+    console.log("lower than threshold");
    }
    if ("disgust" in emotion_response.docEmotions) {
     console.log("disgust levels found");
@@ -125,17 +126,22 @@ function shouldDisplayAd(emotion_response) {
     if (level > threshold) {
         return true;
     }
+    console.log("lower than threshold");
    }
    return false;
 }
 
-app.post('/api/alchemy', function(req, res) {
+function matchAd(combined_response) {
+    //TODO - implement
+    return {"ad": "blabla", "explanation": "blibli"};
+}
+
 /*
 * 1. Analyze url for taxonomy, concepts, keywords, entities and emotions
 * 2. Determine whether or not to display ad
 * 3. If need to display ad - match the appropriate ad by the result from step 1
-*
 */
+app.post('/api/alchemy', function(req, res) {
     var urlToAnalyze = req.body.data;
     console.log("analyzing url - " + urlToAnalyze);
     var parameters = {
@@ -153,21 +159,13 @@ app.post('/api/alchemy', function(req, res) {
                if (err)
                    res.send(err);
                 else if (shouldDisplayAd(emotion_response)) {
-                    console.log("should display ad, determining which");
-                    res.send({"ad": "blabla", "explanation": "blibli"});
+                    console.log("should display ad, determining which ad");
+                    res.send(matchAd(combined_response));
                 } else {
                     console.log("shouldn't display ad");
                     res.send();
                 }
             });
-            //return JSON.stringify(response, null, 2);
         }
     });
-});
-
-app.get('/api/test', function(req, res) {
-    ads.forEach(function(element, index, array) {
-        console.log(element);
-    });
-    res.send("ok");
 });
