@@ -1,0 +1,12 @@
+applications:
+- path: .
+  memory: 512M
+  instances: 1
+  domain: mybluemix.net
+  name: ads matching
+  host: ads-matching
+  disk_quota: 1024M
+  services:
+  - ads matching-AdvancedMobileAccess
+  - ads matching-imfpush
+  - ads matching-cloudantNoSQLDB
