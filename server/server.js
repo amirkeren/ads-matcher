@@ -136,6 +136,7 @@ function shouldDisplayAd(emotion_response) {
 
 function matchAd(combined_response) {
     //TODO - implement
+    console.log("matching ads");
     return {"ad": "blabla", "explanation": "blibli"};
 }
 
