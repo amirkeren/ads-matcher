@@ -32,6 +32,16 @@ var app =  {
     // Make a call to our API to get all Items.
     // Update the table with the items if the request succeeds
     analyzeUrl: function() {
+        var httpPrefix = "http";
+        var text = document.getElementById("todo-add-item").value;
+        if (!text.toLowerCase().startsWith(httpPrefix)) {
+            text = httpPrefix + "://" + text;
+            document.getElementById("todo-add-item").value = text;
+        }
+        document.getElementById("url-container").src = text;
+        document.getElementById("bottom-container").style.display = 'none';
+        document.getElementById("ad-container").innerHTML = "";
+        document.getElementById("explanation-container").innerHTML = "";
         api.analyzeUrl(app.apiRoute, view.refreshTable, app.failure);
     },
 

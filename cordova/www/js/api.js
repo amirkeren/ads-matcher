@@ -6,13 +6,9 @@ var api = {
 		    "Accept": "application/json",
 		};
 		request.setHeaders(headers);
-		var inputID = "todo-add-item";
-        var text = document.getElementById(inputID).value;
 		var body = {
-			"data": text,
+			"data": document.getElementById("todo-add-item").value,
 		};
-		document.getElementById("url-container").src = text;
-		document.getElementById(inputID).value = "";
 		request.send(body, success, failure);
 	}
 };

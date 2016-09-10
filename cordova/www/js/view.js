@@ -6,10 +6,14 @@ var view = {
         if (ad == undefined || explanation == undefined) {
             //don't display ad
             console.log("shouldn't display ad");
+            alert(result.error);
         } else {
             console.log("should display ad");
-            document.getElementById("ad-container").innerHTML = ad;
-            document.getElementById("explanation-container").innerHTML = explanation;
+            var adStr = JSON.stringify(ad);
+            var explanationStr = JSON.stringify(explanation);
+            document.getElementById("ad-container").innerHTML = adStr.substring(1, adStr.length - 1);
+            document.getElementById("explanation-container").innerHTML = explanationStr.substring(1,
+                explanationStr.length - 1);
             document.getElementById("bottom-container").style.display = 'block';
         }
     }
