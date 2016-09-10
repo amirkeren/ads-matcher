@@ -70,6 +70,8 @@ boot(app, __dirname, function (err) {
 });
 
 var ads = [];
+//for testing purposes only
+var analysis_result;
 
 //analyze ads
 (function () {
@@ -152,6 +154,7 @@ app.post('/api/alchemy', function(req, res) {
        if (err)
            res.send(err);
         else {
+            analysis_result = combined_response;
             var parameters = {
                url: urlToAnalyze
             };
@@ -177,15 +180,5 @@ app.get('/api/ads', function(req, res) {
 });
 
 app.get('/api/url', function(req, res) {
-    var urlToAnalyze = req.body.data;
-    var parameters = {
-       extract: toExtract,
-       url: urlToAnalyze
-    };
-    alchemy_language.combined(parameters, function(err, combined_response) {
-       if (err)
-           res.send(err);
-        else
-           res.send(combined_response);
-    });
+    res.send(analysis_result);
 });
