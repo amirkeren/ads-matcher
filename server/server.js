@@ -169,3 +169,23 @@ app.post('/api/alchemy', function(req, res) {
         }
     });
 });
+
+// ------------------------------------- Test APIs ----------------------------------------------------
+
+app.get('/api/ads', function(req, res) {
+    res.send(ads);
+});
+
+app.get('/api/url', function(req, res) {
+    var urlToAnalyze = req.body.data;
+    var parameters = {
+       extract: toExtract,
+       url: urlToAnalyze
+    };
+    alchemy_language.combined(parameters, function(err, combined_response) {
+       if (err)
+           res.send(err);
+        else
+           res.send(combined_response);
+    });
+});
