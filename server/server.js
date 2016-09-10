@@ -34,6 +34,7 @@ app.use(passport.initialize());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+app.use(bodyParser.json());
 
 // Protect DELETE endpoint so it can only be accessed by HelloTodo mobile samples
 app.delete('/api/Items/:id', passport.authenticate('mca-backend-strategy', {session: false}));
