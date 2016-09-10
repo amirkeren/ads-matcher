@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Security-Policy">
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+        <meta http-equiv="Content-Security-Policy"
+          content="default-src *;
+              style-src * 'self' 'unsafe-inline' 'unsafe-eval';
+              script-src * 'self' 'unsafe-inline' 'unsafe-eval';">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+        
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+
+        <title>Ads Matcher</title>
+    </head>
+    <body>
+        <div class="container">
+
+            <h1 id="todo-title">Ads Matcher</h1>
+
+            <div class="input-group" id="todo-new">
+                <strong>Enter URL</strong><br/><br>
+                <input id="todo-add-item" type="text" class="form-control" placeholder="e.g. http://www.cnn.com">
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-primary" onclick="app.analyzeUrl()">Go</button>
+                </span>
+            </div>
+
+            <strong>URL Content</strong><br/><br>
+            <iframe class="input-group" id="url-container" src="" style="width:100%; height:200px; border:1px solid #000;"></iframe>
+            <br>
+
+            <div id="bottom-container" style="display:none;">
+                <strong>Ad & Reasoning</strong><br/><br>
+                <div class="input-group" id="ad-container" style="width:100%; height:50px; border:1px solid #000;"></div>
+                <div class="input-group" id="explanation-container" style="width:100%; height:50px; border:1px solid #000;"></div>
+            </div>
+
+
+        </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/api.js"></script>
+        <script type="text/javascript" src="js/view.js"></script>
+    </body>
+</html>
